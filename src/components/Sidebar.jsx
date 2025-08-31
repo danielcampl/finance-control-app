@@ -4,7 +4,7 @@ import { auth } from '../firebaseConfig';
 
 import Logout from "./Logout";
 
-export default function Header() {
+export default function Sidebar() {
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
 
