@@ -1,4 +1,4 @@
-import { auth } from '../../firebaseConfig';
+import { auth } from '../firebaseConfig';
 import { signOut } from 'firebase/auth';
 
 export default function Logout({ user }) {
@@ -7,6 +7,7 @@ export default function Logout({ user }) {
             <h1>Olá, {user.displayName}</h1>
             <button
                 onClick={() => signOut(auth)}
+                className=''
             >
                 Sair
             </button>
