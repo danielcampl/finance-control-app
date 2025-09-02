@@ -1,15 +1,28 @@
-import Sidebar from "../components/Sidebar";
+import Sidebar, { SidebarItem } from "../components/Sidebar";
 import {
     Card,
     CardBody,
     CardHeader,
     Typography,
 } from "@material-tailwind/react";
+import {
+    LifeBuoy,
+    Receipt,
+    UserCircle,
+    BarChart3,
+    LayoutDashboard,
+} from 'lucide-react';
 
-export default function Home() {
+export default function Dashboard() {
     return (
-        <section>
-            <Sidebar />
+        <section className="flex">
+            <Sidebar>
+                <SidebarItem icon={<LayoutDashboard size={20} />} text='Painel' />
+                <SidebarItem icon={<Receipt size={20} />} text='Gastos' alert />
+                <SidebarItem icon={<BarChart3 size={20} />} text='Investimentos' />
+                <SidebarItem icon={<UserCircle size={20} />} text='Usuário' />
+                <SidebarItem icon={<LifeBuoy size={20} />} text='Ajuda' />
+            </Sidebar>
             <Card className="p-10">
                 <CardHeader shadow={false} floated={false}>
                     <Typography

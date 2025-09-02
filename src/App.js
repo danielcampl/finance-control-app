@@ -3,18 +3,19 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
+  Navigate,
 } from "react-router-dom";
 
-import Login from './pages/Login';
-import Home from './pages/Home';
+import Auth from './pages/Auth';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" exact element={<Login />} />
-        <Route path="*" element={<Login />} />
-        <Route path="/home" exact element={<Home />} />
+        <Route path="/dashboard/*" element={<Dashboard />} />
+        <Route path="/auth/*" element={<Auth />} />
+        <Route path="*" element={<Navigate to="/dashboard/home" replace />} />
       </Routes>
     </Router>
   );
