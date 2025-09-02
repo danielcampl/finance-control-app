@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { auth } from '../firebaseConfig';
+import { useNavigate } from "react-router-dom";
 
 import Logout from "./Logout";
 import Login from "./Login";
@@ -35,10 +36,17 @@ export default function Sidebar({ children }) {
     );
 }
 
-export function SidebarItem({ icon, text, active, alert, onClick }) {
+export function SidebarItem({ icon, text, active, alert, onClick, to }) {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        if (onClick) onClick(); // chama o onClick que altera o active
+        if (to) navigate(to);   // navega para a rota
+    };
+
     return (
         <li
-            onClick={onClick}
+            onClick={handleClick}
             className={`
             relative flex items-center py-2 px-3 my-1
             font-medium rounded-md cursor-pointer
