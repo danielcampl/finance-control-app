@@ -32,7 +32,6 @@ export default function Dashboard() {
                     );
                 })}
             </Sidebar>
-
             <Routes>
                 {routes[0].pages.map((page) => (
                     <Route key={page.path} path={page.path} element={page.element} />

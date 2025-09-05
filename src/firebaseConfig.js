@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+import { getFirestore, doc, setDoc, getDoc, Firestore } from "firebase/firestore";
 
 // Configuração do seu projeto Firebase
 const firebaseConfig = {
@@ -19,22 +19,16 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 
 // Criar conta
-function register(email, senha) {
-  return createUserWithEmailAndPassword(auth, email, senha);
-}
+// export function register(email, senha) {
+//   return createUserWithEmailAndPassword(auth, email, senha);
+// }
 
 // Fazer login
-function login(email, senha) {
-  return signInWithEmailAndPassword(auth, email, senha);
-}
+// export function login(email, senha) {
+//   return signInWithEmailAndPassword(auth, email, senha);
+// }
 
 // Salvar dados no banco
-async function saveUserData(userId, dados) {
-  await setDoc(doc(db, "usuarios", userId), dados);
-}
-
-// Buscar dados
-async function loadUserData(userId) {
-  const docSnap = await getDoc(doc(db, "usuarios", userId));
-  return docSnap.exists() ? docSnap.data() : null;
-}
+// export async function saveUserData(userId, dados) {
+//   await setDoc(doc(db, "usuarios", userId), dados);
+// }

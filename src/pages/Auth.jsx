@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { auth } from '../firebaseConfig';
+import { auth, db } from '../firebaseConfig';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { doc, setDoc } from "firebase/firestore";
+
 import {
     Card,
     Input,
@@ -10,22 +12,37 @@ import {
     Typography,
 } from "@material-tailwind/react";
 
-function Login() {
+export default function Auth() {
     const navigate = useNavigate();
 
     const loginAccept = () => {
-        navigate('/home');
-    }
+        navigate('/dashboard/painel');
+    };
 
     const loginGoogle = async () => {
         const provider = new GoogleAuthProvider();
 
         try {
             const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+
+            // Salva ou atualiza o usuário no Firestore
+            await setDoc(
+                doc(db, "users", user.uid),
+                {
+                    name: user.displayName,
+                    email: user.email,
+                    photo: user.photoURL,
+                    lastLogin: new Date(),
+                },
+                { merge: true } // merge = atualiza sem sobrescrever tudo
+            );
+
+            console.log("Usuário salvo/atualizado no Firestore:", user.uid);
+
             loginAccept();
-            console.log('Usuário logado:', result.user);
         } catch (error) {
-            console.log('Erro ao logar:', error);
+            console.log("Erro ao logar:", error);
         }
     };
 
@@ -49,10 +66,7 @@ function Login() {
                         </Typography>
                     </CardHeader>
                     <CardBody>
-                        <form
-                            action="#"
-                            className="flex flex-col gap-4 md:mt-12"
-                        >
+                        <form action="#" className="flex flex-col gap-4 md:mt-12">
                             <div>
                                 <div className="flex gap-2 flex-col">
                                     <div>
@@ -66,17 +80,14 @@ function Login() {
                                             </Typography>
                                         </label>
                                         <Input
-                                            disable
+                                            disabled
                                             id="email"
                                             color="gray"
                                             size="lg"
                                             type="email"
-                                            name="email"
                                             placeholder="name@mail.com"
                                             className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 p-2"
-                                            labelProps={{
-                                                className: "hidden",
-                                            }}
+                                            labelProps={{ className: "hidden" }}
                                         />
                                     </div>
                                     <div>
@@ -90,24 +101,23 @@ function Login() {
                                             </Typography>
                                         </label>
                                         <Input
-                                            disable
+                                            disabled
                                             id="password"
                                             color="gray"
                                             size="lg"
                                             type="text"
-                                            name="senha"
                                             placeholder="***********"
                                             className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200 p-2"
-                                            labelProps={{
-                                                className: "hidden",
-                                            }}
+                                            labelProps={{ className: "hidden" }}
                                         />
                                     </div>
                                 </div>
                             </div>
-                            <Button disable className="w-full h-10 font-sans font-semibold text-white bg-[#212529] hover:bg-[#343a40]">
+
+                            <Button disabled className="w-full h-10 font-sans font-semibold text-white bg-[#212529] hover:bg-[#343a40]">
                                 continuar
                             </Button>
+
                             <Button
                                 variant="outlined"
                                 size="lg"
@@ -122,11 +132,12 @@ function Login() {
                                 />{" "}
                                 Entrar com Google
                             </Button>
+
                             <Typography
                                 variant="small"
                                 className="text-center mx-auto max-w-[19rem] !font-medium !text-gray-600"
                             >
-                                Após uma vez logado, você concorda com os {" "}
+                                Após uma vez logado, você concorda com os{" "}
                                 <a href="#" className="text-gray-900">
                                     Termos de Serviço
                                 </a>{" "}
@@ -142,5 +153,3 @@ function Login() {
         </section>
     );
 }
-
-export default Login;
