@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react';
 import { db, auth } from '../../firebaseConfig';
 import { doc, getDoc } from "firebase/firestore";
+import {
+    Card,
+    CardBody,
+    Typography,
+} from "@material-tailwind/react";
+
+import Header from "components/card/Header";
 
 export default function Usuário() {
     const [getUserData, setGetUserData] = useState(null);
@@ -33,9 +40,16 @@ export default function Usuário() {
     }, []);
 
     return (
-        <div>
-            <h1>Descrição:</h1>
-            {getUserData ? <pre>{JSON.stringify(getUserData, null, 2)}</pre> : "Carregando..."}
-        </div>
+        <Card className="p-10 bg-gradient-to-r from-slate-300 to-gray-50 w-full h-screen">
+            <Header title={'Usuário'} />
+            <CardBody>
+                <Typography className="!text-gray-600 text-[18px] font-normal md:max-w-sm">
+                    Informações de pagamentos
+                </Typography>
+                <div>
+                    {getUserData ? <pre>{JSON.stringify(getUserData, null, 2)}</pre> : "Carregando..."}
+                </div>
+            </CardBody>
+        </Card>
     );
 }
