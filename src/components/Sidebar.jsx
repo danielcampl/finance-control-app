@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
 import { auth } from '../firebaseConfig';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import Logout from "./Logout";
 import Login from "./Login";
 
 export default function Sidebar({ children }) {
     const [user, setUser] = useState(null);
-    const [activeIndex, setActiveIndex] = useState(0);
+    const location = useLocation();
 
     useEffect(() => {
         auth.onAuthStateChanged(setUser);
     }, []);
 
-    const itemsWithProps = children.map((child, index) =>
+    const itemsWithProps = children.map((child) =>
         child.type === SidebarItem
-            ? { ...child, props: { ...child.props, active: activeIndex === index, onClick: () => setActiveIndex(index) } }
+            ? { ...child, props: { ...child.props, active: location.pathname === child.props.to } }
             : child
     );
 
@@ -41,7 +41,7 @@ export function SidebarItem({ icon, text, active, alert, onClick, to }) {
 
     const handleClick = () => {
         if (onClick) onClick(); // chama o onClick que altera o active
-        if (to) navigate(to);   // navega para a rota
+        if (to) navigate(to); // navega para a rota
     };
 
     return (
