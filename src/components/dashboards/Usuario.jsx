@@ -26,6 +26,8 @@ export default function Usuário() {
 
                     if (userSnap.exists()) {
                         setGetUserData(userSnap.data());
+                        // console.log(getUserData.photo);
+
                     } else {
                         console.log("Usuário não encontrado no Firestore!");
                     }
@@ -49,10 +51,30 @@ export default function Usuário() {
                 <Typography className="!text-gray-600 text-[18px] font-normal md:max-w-sm">
                     Informações do usuário
                 </Typography>
-                <div>
+                <div className='py-10 w-full h-full'>
                     {loading ? "Carregando..."
                         : getUserData
-                            ? <pre>{JSON.stringify(getUserData, null, 2)}</pre>
+                            ? <pre className='flex flex-col gap-4'>
+                                {/* {JSON.stringify(getUserData, null, 2)} */}
+                                <div className='w-full h-full'>
+                                    <Typography className="!text-gray-500 text-[16px] font-normal md:max-w-sm">
+                                        Sua foto
+                                    </Typography>
+                                    <img src={getUserData.photo} alt="photo" className='w-20 h-20' />
+                                </div>
+                                <div>
+                                    <Typography className="!text-gray-500 text-[16px] font-normal md:max-w-sm">
+                                        Seu nome
+                                    </Typography>
+                                    <span className='font-sans text-[18px]'>{getUserData.name}</span>
+                                </div>
+                                <div>
+                                    <Typography className="!text-gray-500 text-[16px] font-normal md:max-w-sm">
+                                        Seu email
+                                    </Typography>
+                                    <span className='font-sans text-[18px]'>{getUserData.email}</span>
+                                </div>
+                            </pre>
                             : "Nenhum dado encontrado"}
                 </div>
             </CardBody>
