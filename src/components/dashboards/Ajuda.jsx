@@ -15,34 +15,24 @@ export default function Ajuda() {
         <Card className="p-10 bg-gradient-to-r from-slate-300 to-gray-50 w-full h-screen">
             <Header title={'Ajuda'} />
             <CardBody className="w-full h-full">
-                <Typography className="!text-gray-600 text-[18px] font-normal md:max-w-sm">
-                    Aba de ajuda ao usuário
-                </Typography>
-                <section>
+                <section className="flex flex-col justify-center items-center w-full h-full">
                     <div className="container mx-auto text-center">
                         <Typography
                             variant="h5"
                             color="blue-gray"
                             className="mb-4 !text-base lg:!text-2xl"
                         >
-                            Ajuda com Erros
-                        </Typography>
-                        <Typography
-                            variant="h1"
-                            color="blue-gray"
-                            className="mb-4 !text-2xl lg:!text-3xl"
-                        >
-                            Estou Aqui Para Ajudar
+                            Ajuda
                         </Typography>
                         <Typography className="mb-10 font-normal !text-lg lg:mb-20 mx-auto max-w-4xl !text-gray-500">
                             Iremos responder e arrumar quaisquer erros da página, estamos implementando coisas novas
                             e sempre atualizando o código para facilitar a navegação do usuário. Basta preencher o
-                            formulário e sua dúvida que iremos responder o mais rápido possível.
+                            formulário com sua dúvida que iremos sanar o mais rápido possível.
                         </Typography>
                         <div className="flex items-center justify-center">
                             <form
                                 action="#"
-                                className="flex flex-col gap-3 bg-[#adb5bd] px-10 py-2 rounded-md"
+                                className="flex flex-col gap-3 bg-[#adb5bd] p-8 rounded-md"
                             >
                                 <Typography
                                     variant="small"
@@ -131,7 +121,7 @@ export default function Ajuda() {
                                         Mensagem
                                     </Typography>
                                     <Textarea
-                                        rows={6}
+                                        rows={4}
                                         color="gray"
                                         placeholder="Mensagem"
                                         name="message"
