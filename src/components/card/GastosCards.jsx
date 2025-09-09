@@ -31,7 +31,7 @@ export default function GastosCards() {
         banks.map((bank) => (
           <div
             key={bank.name}
-            className="p-4 border rounded cursor-pointer hover:bg-gray-100 w-[100%] p-6"
+            className="border rounded cursor-pointer hover:bg-gray-100 w-[100%] p-6"
             onClick={() => handleBankClick(bank)}
           >
             {bank.name}
