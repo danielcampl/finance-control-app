@@ -74,6 +74,12 @@ export default function Usuário() {
                                     </Typography>
                                     <span className='font-sans text-[18px]'>{getUserData.email}</span>
                                 </div>
+                                <div>
+                                    <Typography className="!text-gray-500 text-[16px] font-normal md:max-w-sm">
+                                        Último login
+                                    </Typography>
+                                    <span className='font-sans text-[18px]'>{Date(getUserData.lastLogin).toLocaleLowerCase()}</span>
+                                </div>
                             </pre>
                             : "Nenhum dado encontrado"}
                 </div>
