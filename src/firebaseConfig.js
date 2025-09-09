@@ -1,34 +1,19 @@
-import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, doc, setDoc, getDoc, Firestore } from "firebase/firestore";
+import { initializeApp, getApps, getApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
-// Configuração do seu projeto Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyBGKkFy20wOLtIp3p0K8gCurW3sf5AwtHI",
-  authDomain: "finance-control-e3058.firebaseapp.com",
-  databaseURL: "https://finance-control-e3058-default-rtdb.firebaseio.com",
-  projectId: "finance-control-e3058",
-  storageBucket: "finance-control-e3058.firebasestorage.app",
-  messagingSenderId: "952148110026",
-  appId: "1:952148110026:web:cb974e24833c315a4aa233"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
-// Inicializar Firebase
-export const app = initializeApp(firebaseConfig);
+// garante inicialização única
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+
 export const auth = getAuth(app);
 export const db = getFirestore(app);
-
-// Criar conta
-// export function register(email, senha) {
-//   return createUserWithEmailAndPassword(auth, email, senha);
-// }
-
-// Fazer login
-// export function login(email, senha) {
-//   return signInWithEmailAndPassword(auth, email, senha);
-// }
-
-// Salvar dados no banco
-// export async function saveUserData(userId, dados) {
-//   await setDoc(doc(db, "usuarios", userId), dados);
-// }
