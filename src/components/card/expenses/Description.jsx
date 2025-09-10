@@ -12,6 +12,7 @@ export default function Description({ transaction, bankId }) {
   const [isExpense, setExpense] = useState(false);
   const [payment, setPayment] = useState(null);
   const [installments, setInstallments] = useState(null);
+  const [paid, setPaid] = useState(null);
   const [type, setType] = useState(null);
 
   const [transactionsList, setTransactionsList] = useState([]);
@@ -42,7 +43,16 @@ export default function Description({ transaction, bankId }) {
   }, [bankId]);
 
   // Salvar nova transação no Firestore
-  const handleSaveForm = async () => {
+  const handleSaveForm = async (e) => {
+    e.preventDefault();
+    if (!type) {
+      alert("Selecione um tipo!");
+      return;
+    }
+    if (!payment) {
+      alert("Selecione uma forma de pagamento!");
+      return;
+    }
     if (!desc || !amount) {
       alert("Informe uma descrição e um valor");
       return;
@@ -66,6 +76,7 @@ export default function Description({ transaction, bankId }) {
       expense: isExpense,
       payment: payment?.value || "",
       installments: installments?.value || 1,
+      paid: paid?.value || 'À vista',
       type: type?.value || "",
       date: new Date().toISOString(),
     };
@@ -78,6 +89,7 @@ export default function Description({ transaction, bankId }) {
       setAmount("");
       setPayment(null);
       setInstallments(null);
+      setPaid(null);
       setType(null);
       setExpense(false);
     } catch (err) {
@@ -97,6 +109,11 @@ export default function Description({ transaction, bankId }) {
     label: `${i + 1}x`,
   }));
 
+  const paidInstallments = Array.from({ length: 12 }, (_, i) => ({
+    value: i === 0 ? "À vista" : `${i + 1}`,
+    label: i === 0 ? "À vista" : `${i + 1}`,
+  }));
+
   const optionsType = [
     { value: "entrada", label: "Entrada" },
     { value: "saida", label: "Saída" },
@@ -114,13 +131,26 @@ export default function Description({ transaction, bankId }) {
   const total = income - expense;
 
   return (
-    <section className="flex flex-col gap-1 items-center">
-      <div className="p-10 w-[80%] flex flex-col gap-4">
+    <section className="flex flex-col gap-2 items-center">
+      <div className="p-2 w-full max-w-[1120px] flex flex-col gap-4">
         <Finance income={income} expense={expense} total={total} />
         <div className="flex w-full gap-6 items-center">
           <div>
             <span>Forma de Pagamento</span>
-            <Select options={optionsPayment} value={payment} onChange={setPayment} />
+            <Select
+              id="payment"
+              options={optionsPayment}
+              value={payment}
+              onChange={setPayment}
+              isClearable
+              placeholder='Selecione'
+            />
+            <input
+              type="hidden"
+              name="payment"
+              value={payment ? payment.value : ""}
+              required
+            />
           </div>
           <div className="flex flex-col">
             <span>Valor</span>
@@ -129,6 +159,8 @@ export default function Description({ transaction, bankId }) {
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               className="p-1 w-40"
+              placeholder='Valor'
+              required
             />
           </div>
           <div>
@@ -137,17 +169,44 @@ export default function Description({ transaction, bankId }) {
               options={optionsInstallment}
               value={installments}
               onChange={setInstallments}
+              placeholder='Parcelas'
+            />
+          </div>
+          <div>
+            <span>Parcelas Pagas</span>
+            <Select
+              options={paidInstallments}
+              value={paid}
+              onChange={setPaid}
+              placeholder='À vista'
             />
           </div>
           <div>
             <span>Tipo</span>
-            <Select options={optionsType} value={type} onChange={setType} />
+            <Select
+              options={optionsType}
+              value={type}
+              onChange={setType}
+              placeholder='Tipo'
+              isClearable
+            />
+            <input
+              type="hidden"
+              value={type ? type.value : ""}
+              required
+            />
           </div>
         </div>
         <div className="flex w-full justify-start gap-8 items-end">
-          <div className="flex flex-col w-full">
+          <div className="flex flex-col w-full max-w-[420px]">
             <span>Descrição</span>
-            <input value={desc} onChange={(e) => setDesc(e.target.value)} className="w-full h-8 p-2" />
+            <input
+              value={desc}
+              onChange={(e) => setDesc(e.target.value)}
+              className="w-full h-8 p-2"
+              placeholder='Escreva uma descrição'
+              required
+            />
           </div>
           <button
             type="button"

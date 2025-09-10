@@ -1,6 +1,5 @@
 // Grid.jsx
 import { useEffect } from "react";
-import * as C from "./GridStyles";
 import GridItem from "./GridItem";
 
 import { auth, db } from "../../../../firebaseConfig";
@@ -77,28 +76,33 @@ export default function Grid({ items, setItems, bankId }) {
   };
 
   return (
-    <C.Table>
-        <C.Thead>
-          <C.Tr>
-            <C.Th width={10}>Pagamento</C.Th>
-            <C.Th width={40}>Descrição</C.Th>
-            <C.Th width={10}>Valor</C.Th>
-            <C.Th width={10}>Parcelas</C.Th>
-            <C.Th width={10}>Data</C.Th>
-            <C.Th width={10}>Tipo</C.Th>
-            <C.Th width={10}></C.Th>
-          </C.Tr>
-        </C.Thead>
-        <C.Tbody>
-          {items?.map((item, index) => (
-            <GridItem
-              key={index}
-              item={item}
-              onDelete={onDelete}
-              onEdit={onEdit}
-            />
-          ))}
-        </C.Tbody>
-    </C.Table>
+    <div className="w-full max-w-[1120px] max-h-[390px] mx-auto my-2 p-4 bg-[#f1f2f6] text-[#27187e] shadow-md rounded-lg">
+      <div className="max-h-[290px] overflow-y-auto overflow-x-auto">
+        <table className="w-full border-collapse text-left">
+          <thead className="sticky top-0 bg-[#f1f2f6] shadow">
+            <tr>
+              <th className="w-[10%] pb-2 border-b">Pagamento</th>
+              <th className="w-[30%] pb-2 border-b">Descrição</th>
+              <th className="w-[10%] pb-2 border-b">Valor</th>
+              <th className="w-[10%] pb-2 border-b">Parcelas</th>
+              <th className="w-[10%] pb-2 border-b">Pagas</th>
+              <th className="w-[10%] pb-2 border-b">Data</th>
+              <th className="w-[10%] pb-2 border-b">Tipo</th>
+              <th className="w-[5%] pb-2 border-b"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {items?.map((item, index) => (
+              <GridItem
+                key={index}
+                item={item}
+                onDelete={onDelete}
+                onEdit={onEdit}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }
