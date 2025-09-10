@@ -1,54 +1,65 @@
-import { IoTrashBinSharp, IoArrowDownCircleOutline, IoArrowUpCircleOutline } from "react-icons/io5";
-import * as C from './GridStyles.js';
+import {
+  IoTrashBinSharp,
+  IoArrowDownCircleOutline,
+  IoArrowUpCircleOutline,
+} from "react-icons/io5";
 import { FaEdit } from "react-icons/fa";
 
 export default function GridItem({ item, onDelete, onEdit }) {
   return (
-    <C.Tr>
-      {/* Pagamento (vem do select do Description) */}
-      <C.Td>{item.payment}</C.Td>
+    <tr className="border-b">
+      {/* Pagamento */}
+      <td className="py-3 break-all">{item.payment}</td>
 
       {/* Descrição */}
-      <C.Td>{item.desc}</C.Td>
+      <td className="py-3 break-all">{item.desc}</td>
 
       {/* Valor */}
-      <C.Td>{item.amount}</C.Td>
+      <td className="py-3 break-all">{item.amount}</td>
 
       {/* Parcelas */}
-      <C.Td>{item.installments}</C.Td>
+      <td className="py-3 text-start">{item.installments}</td>
+
+      {/* Parcelas Pagas */}
+      <td className="py-3 text-start">{item.paid}</td>
 
       {/* Data */}
-      <C.Td>{item.date ? new Date(item.date).toLocaleDateString("pt-BR") : ""}</C.Td>
+      <td className="py-3 text-start">
+        {item.date ? new Date(item.date).toLocaleDateString("pt-BR") : ""}
+      </td>
 
-      {/* Tipo (Entrada/Saída com ícone) */}
-      <C.Td>
+      {/* Tipo (Entrada/Saída com ícone colorido) */}
+      <td className="">
         {item.type === "saida" ? (
-          <IoArrowDownCircleOutline color="red" />
+          <IoArrowDownCircleOutline className="text-red-500 w-5 h-5 mx-auto" />
         ) : (
-          <IoArrowUpCircleOutline color="green" />
+          <IoArrowUpCircleOutline className="text-green-500 w-5 h-5 mx-auto" />
         )}
-      </C.Td>
+      </td>
 
       {/* Ações */}
-      <C.Td className="flex gap-2">
-        <IoTrashBinSharp
-          onClick={() => onDelete(item.id)}
-          style={{ cursor: "pointer" }}
-        />
-        <FaEdit
-          onClick={() =>
-            onEdit(item.id, {
-              desc: item.desc,
-              amount: item.amount,
-              payment: item.payment,
-              installments: item.installments,
-              type: item.type,
-              date: item.date,
-            })
-          }
-          style={{ cursor: "pointer" }}
-        />
-      </C.Td>
-    </C.Tr>
+      <td className="">
+        <div className="flex justify-center gap-3">
+          <IoTrashBinSharp
+            onClick={() => onDelete(item.id)}
+            className="w-5 h-5 text-red-600 cursor-pointer hover:text-red-800 transition"
+          />
+          <FaEdit
+            onClick={() =>
+              onEdit(item.id, {
+                desc: item.desc,
+                amount: item.amount,
+                payment: item.payment,
+                installments: item.installments,
+                paid: item.paid,
+                type: item.type,
+                date: item.date,
+              })
+            }
+            className="w-5 h-5 text-blue-600 cursor-pointer hover:text-blue-800 transition"
+          />
+        </div>
+      </td>
+    </tr>
   );
 }
