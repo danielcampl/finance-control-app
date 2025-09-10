@@ -28,17 +28,16 @@ export default function GridItem({ item, onDelete, onEdit }) {
         {item.date ? new Date(item.date).toLocaleDateString("pt-BR") : ""}
       </td>
 
-      {/* Tipo (Entrada/Saída com ícone colorido) */}
-      <td className="">
+      <td>
         {item.type === "saida" ? (
-          <IoArrowDownCircleOutline className="text-red-500 w-5 h-5 mx-auto" />
+          <IoArrowDownCircleOutline className="text-red-500 w-5 h-5" />
         ) : (
-          <IoArrowUpCircleOutline className="text-green-500 w-5 h-5 mx-auto" />
+          <IoArrowUpCircleOutline className="text-green-500 w-5 h-5" />
         )}
       </td>
 
       {/* Ações */}
-      <td className="">
+      <td>
         <div className="flex justify-center gap-3">
           <IoTrashBinSharp
             onClick={() => onDelete(item.id)}
