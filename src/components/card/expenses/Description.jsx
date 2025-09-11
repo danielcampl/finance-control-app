@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import Select from "react-select";
 import { auth, db } from "../../../firebaseConfig";
 import { collection, addDoc, query, where, onSnapshot } from "firebase/firestore";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 import Grid from "./Grid/Grid";
 import Finance from "./Finance";
@@ -14,7 +16,7 @@ export default function Description({ transaction, bankId }) {
   const [installments, setInstallments] = useState(null);
   const [paid, setPaid] = useState(null);
   const [type, setType] = useState(null);
-
+  const [selectedDate, setSelectedDate] = useState(null);
   const [transactionsList, setTransactionsList] = useState([]);
 
   useEffect(() => {
@@ -41,6 +43,10 @@ export default function Description({ transaction, bankId }) {
 
     return () => unsubscribe();
   }, [bankId]);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
 
   // Salvar nova transação no Firestore
   const handleSaveForm = async (e) => {
@@ -78,7 +84,7 @@ export default function Description({ transaction, bankId }) {
       installments: installments?.value || 1,
       paid: paid?.value || 'À vista',
       type: type?.value || "",
-      date: new Date().toISOString(),
+      date: selectedDate ? selectedDate.toISOString() : new Date().toISOString(),
     };
 
     try {
@@ -92,6 +98,7 @@ export default function Description({ transaction, bankId }) {
       setPaid(null);
       setType(null);
       setExpense(false);
+      setSelectedDate(null);
     } catch (err) {
       console.error("Erro ao salvar transação:", err);
     }
@@ -135,7 +142,7 @@ export default function Description({ transaction, bankId }) {
       <div className="p-2 w-full max-w-[1120px] flex flex-col gap-4">
         <Finance income={income} expense={expense} total={total} />
         <div className="flex w-full gap-6 items-center">
-          <div>
+          <div className="flex flex-col">
             <span>Forma de Pagamento</span>
             <Select
               id="payment"
@@ -163,16 +170,16 @@ export default function Description({ transaction, bankId }) {
               required
             />
           </div>
-          <div>
+          <div className="flex flex-col">
             <span>Parcelas</span>
             <Select
               options={optionsInstallment}
               value={installments}
               onChange={setInstallments}
-              placeholder='Parcelas'
+              placeholder='Padrão (1x)'
             />
           </div>
-          <div>
+          <div className="flex flex-col">
             <span>Parcelas Pagas</span>
             <Select
               options={paidInstallments}
@@ -181,7 +188,7 @@ export default function Description({ transaction, bankId }) {
               placeholder='À vista'
             />
           </div>
-          <div>
+          <div className="flex flex-col">
             <span>Tipo</span>
             <Select
               options={optionsType}
@@ -196,6 +203,7 @@ export default function Description({ transaction, bankId }) {
               required
             />
           </div>
+
         </div>
         <div className="flex w-full justify-start gap-8 items-end">
           <div className="flex flex-col w-full max-w-[420px]">
@@ -206,6 +214,15 @@ export default function Description({ transaction, bankId }) {
               className="w-full h-8 p-2"
               placeholder='Escreva uma descrição'
               required
+            />
+          </div>
+          <div className="flex flex-col">
+            <span>Data</span>
+            <DatePicker
+              selected={selectedDate}
+              onChange={handleDateChange}
+              placeholderText={new Date().toLocaleDateString("pt-BR", { year: 'numeric', month: 'short', day: 'numeric' })}
+              className="w-full h-8 p-2"
             />
           </div>
           <button

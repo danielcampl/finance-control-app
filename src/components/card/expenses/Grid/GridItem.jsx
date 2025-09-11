@@ -25,7 +25,7 @@ export default function GridItem({ item, onDelete, onEdit }) {
 
       {/* Data */}
       <td className="py-3 text-start">
-        {item.date ? new Date(item.date).toLocaleDateString("pt-BR") : ""}
+        {new Date(item.date).toLocaleDateString("pt-BR")}
       </td>
 
       <td>

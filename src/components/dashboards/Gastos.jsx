@@ -27,8 +27,7 @@ export default function Gastos() {
     <Card className="p-10 bg-gradient-to-r from-slate-300 to-gray-50 w-full h-screen">
       <Header title={`Gastos${currentBank ? " " + currentBank.name : ""}`} />
       <CardBody className="w-full h-full">
-        <GastosCards />
-        <Outlet />
+        {!currentBank ? <GastosCards /> : <Outlet />}
       </CardBody>
       <Footer />
     </Card>
