@@ -25,7 +25,11 @@ export default function GridItem({ item, onDelete, onEdit }) {
 
       {/* Data */}
       <td className="py-3 text-start">
-        {new Date(item.date).toLocaleDateString("pt-BR")}
+        {item.date
+          ? item.date.seconds
+            ? new Date(item.date.seconds * 1000).toLocaleDateString("pt-BR") // caso seja Timestamp
+            : new Date(item.date).toLocaleDateString("pt-BR")                // caso seja string antiga
+          : ""}
       </td>
 
       <td>
