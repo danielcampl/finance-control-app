@@ -60,6 +60,7 @@ export default function Grid({ items, setItems, bankId }) {
 
   // Editar transação
   const onEdit = async (ID, updatedData) => {
+    alert('Função ainda não implementada');
     try {
       const user = auth.currentUser;
       const docRef = doc(db, "users", user.uid, "transactions", ID);
