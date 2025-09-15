@@ -54,15 +54,17 @@ export default function Itau() {
   };
 
   return (
-    <CardBody>
+    <>
       <button
         onClick={handleBack}
-        className="flex items-center gap-2 p-2 border rounded hover:bg-gray-100"
+        className="w-20 text-sm flex items-center gap-2 p-2 border rounded hover:bg-gray-100"
       >
-        <FiArrowLeft size={20} />
+        <FiArrowLeft size={15} />
         Voltar
       </button>
-      <Description onAdd={handleAddTransaction} bankId='itau' />
-    </CardBody>
+      <CardBody>
+        <Description onAdd={handleAddTransaction} bankId='itau' />
+      </CardBody>
+    </>
   );
 }

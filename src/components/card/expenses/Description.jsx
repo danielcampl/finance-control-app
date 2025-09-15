@@ -112,13 +112,13 @@ export default function Description({ transaction, bankId }) {
   ];
 
   const optionsInstallment = Array.from({ length: 12 }, (_, i) => ({
-    value: i + 1,
-    label: `${i + 1}x`,
+    value: i === 0 ? "À Vista" : `${i + 1}x`,
+    label: i === 0 ? "À Vista" : `${i + 1}x`,
   }));
 
   const paidInstallments = Array.from({ length: 12 }, (_, i) => ({
-    value: i === 0 ? "À vista" : `${i + 1}`,
-    label: i === 0 ? "À vista" : `${i + 1}`,
+    value: i === 0 ? "1" : `${i + 1}`,
+    label: i === 0 ? "1" : `${i + 1}`,
   }));
 
   const optionsType = [
@@ -142,70 +142,74 @@ export default function Description({ transaction, bankId }) {
       <div className="p-2 w-full max-w-[1120px] flex flex-col gap-4">
         <Finance income={income} expense={expense} total={total} />
         <div className="flex w-full gap-6 items-center">
-          <div className="flex flex-col">
-            <span>Forma de Pagamento</span>
-            <Select
-              id="payment"
-              options={optionsPayment}
-              value={payment}
-              onChange={setPayment}
-              isClearable
-              placeholder='Selecione'
-            />
-            <input
-              type="hidden"
-              name="payment"
-              value={payment ? payment.value : ""}
-              required
-            />
+          <div className="md:flex gap-4">
+            <div className="flex flex-col">
+              <span>Forma de Pagamento</span>
+              <Select
+                id="payment"
+                options={optionsPayment}
+                value={payment}
+                onChange={setPayment}
+                isClearable
+                placeholder='Selecione'
+              />
+              <input
+                type="hidden"
+                name="payment"
+                value={payment ? payment.value : ""}
+                required
+              />
+            </div>
+            <div className="flex flex-col">
+              <span>Valor</span>
+              <input
+                type="number"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                className="p-1 w-40"
+                placeholder='Valor'
+                required
+              />
+            </div>
           </div>
-          <div className="flex flex-col">
-            <span>Valor</span>
-            <input
-              type="number"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              className="p-1 w-40"
-              placeholder='Valor'
-              required
-            />
-          </div>
-          <div className="flex flex-col">
-            <span>Parcelas</span>
-            <Select
-              options={optionsInstallment}
-              value={installments}
-              onChange={setInstallments}
-              placeholder='Padrão (1x)'
-            />
-          </div>
-          <div className="flex flex-col">
-            <span>Parcelas Pagas</span>
-            <Select
-              options={paidInstallments}
-              value={paid}
-              onChange={setPaid}
-              placeholder='À vista'
-            />
-          </div>
-          <div className="flex flex-col">
-            <span>Tipo</span>
-            <Select
-              options={optionsType}
-              value={type}
-              onChange={setType}
-              placeholder='Tipo'
-              isClearable
-            />
-            <input
-              type="hidden"
-              value={type ? type.value : ""}
-              required
-            />
+          <div className="md:flex gap-4">
+            <div className="flex flex-col">
+              <span>Parcelas</span>
+              <Select
+                options={optionsInstallment}
+                value={installments}
+                onChange={setInstallments}
+                placeholder='À vista'
+              />
+            </div>
+            <div className="flex flex-col">
+              <span>Parcelas Pagas</span>
+              <Select
+                options={paidInstallments}
+                value={paid}
+                onChange={setPaid}
+                placeholder='Padrão 1'
+              />
+            </div>
+            <div className="flex flex-col">
+              <span>Tipo</span>
+              <Select
+                options={optionsType}
+                value={type}
+                onChange={setType}
+                placeholder='Tipo'
+                isClearable
+              />
+              <input
+                type="hidden"
+                value={type ? type.value : ""}
+                required
+              />
+            </div>
           </div>
 
         </div>
-        <div className="flex w-full justify-start gap-8 items-end">
+        <div className="flex flex-col md:flex-row w-full justify-start gap-8 items-start md:items-end">
           <div className="flex flex-col w-full max-w-[420px]">
             <span>Descrição</span>
             <input
@@ -216,22 +220,24 @@ export default function Description({ transaction, bankId }) {
               required
             />
           </div>
-          <div className="flex flex-col">
-            <span>Data</span>
-            <DatePicker
-              selected={selectedDate}
-              onChange={handleDateChange}
-              placeholderText={new Date().toLocaleDateString("pt-BR", { year: 'numeric', month: 'short', day: 'numeric' })}
-              className="w-full h-8 p-2"
-            />
+          <div className="flex items-end gap-4">
+            <div className="flex flex-col">
+              <span>Data</span>
+              <DatePicker
+                selected={selectedDate}
+                onChange={handleDateChange}
+                placeholderText={new Date().toLocaleDateString("pt-BR", { year: 'numeric', month: 'short', day: 'numeric' })}
+                className="w-full h-8 p-2"
+              />
+            </div>
+            <button
+              type="button"
+              onClick={handleSaveForm}
+              className="w-44 h-10 font-sans font-semibold text-white bg-[#212529] hover:bg-[#343a40]"
+            >
+              Adicionar
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={handleSaveForm}
-            className="w-44 h-10 font-sans font-semibold text-white bg-[#212529] hover:bg-[#343a40]"
-          >
-            Adicionar
-          </button>
         </div>
       </div>
       <Grid
