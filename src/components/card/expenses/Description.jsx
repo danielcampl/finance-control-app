@@ -141,7 +141,7 @@ export default function Description({ transaction, bankId }) {
     <section className="flex flex-col gap-2 items-center">
       <div className="p-2 w-full max-w-[1120px] flex flex-col gap-4">
         <Finance income={income} expense={expense} total={total} />
-        <div className="flex w-full gap-6 items-center">
+        <div className="flex flex-col md:flex-row w-full gap-6 items-center">
           <div className="md:flex gap-4">
             <div className="flex flex-col">
               <span>Forma de Pagamento</span>

@@ -24,7 +24,7 @@ export default function Ajuda() {
                         >
                             Ajuda
                         </Typography>
-                        <Typography className="mb-10 font-normal !text-lg lg:mb-20 mx-auto max-w-4xl !text-gray-500">
+                        <Typography className="mb-10 text-sm font-normal md:!text-lg lg:mb-20 mx-auto max-w-4xl !text-gray-500">
                             Iremos responder e arrumar quaisquer erros da página, estamos implementando coisas novas
                             e sempre atualizando o código para facilitar a navegação do usuário. Basta preencher o
                             formulário com sua dúvida que iremos sanar o mais rápido possível.
@@ -32,7 +32,7 @@ export default function Ajuda() {
                         <div className="flex items-center justify-center">
                             <form
                                 action="#"
-                                className="flex flex-col gap-3 bg-[#adb5bd] p-8 rounded-md"
+                                className="flex flex-col gap-3 bg-[#adb5bd] p-4 md:p-8 rounded-md"
                             >
                                 <Typography
                                     variant="small"
@@ -41,10 +41,10 @@ export default function Ajuda() {
                                     Selecione uma das opções
                                 </Typography>
                                 <div className="flex gap-4">
-                                    <Button variant="outlined" className="w-44 h-10 font-sans font-semibold text-white bg-[#212529] hover:bg-[#343a40]">
+                                    <Button variant="outlined" className="w-24 h-10 font-sans font-semibold text-white bg-[#212529] hover:bg-[#343a40]">
                                         Dúvida
                                     </Button>
-                                    <Button variant="outlined" className="w-44 h-10 font-sans font-semibold text-white bg-[#212529] hover:bg-[#343a40]">
+                                    <Button variant="outlined" className="w-28 h-10 font-sans font-semibold text-white bg-[#212529] hover:bg-[#343a40]">
                                         Erros da página
                                     </Button>
                                 </div>
