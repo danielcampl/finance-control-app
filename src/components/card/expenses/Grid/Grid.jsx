@@ -82,14 +82,14 @@ export default function Grid({ items, setItems, bankId }) {
         <table className="w-full border-collapse text-left">
           <thead className="sticky top-0 bg-[#f1f2f6] shadow">
             <tr>
-              <th className="w-[10%] pb-2 border-b">Pagamento</th>
-              <th className="w-[30%] pb-2 border-b">Descrição</th>
-              <th className="w-[10%] pb-2 border-b">Valor</th>
-              <th className="w-[10%] pb-2 border-b">Parcelas</th>
-              <th className="w-[10%] pb-2 border-b">Pagas</th>
-              <th className="w-[10%] pb-2 border-b">Data</th>
-              <th className="w-[10%] pb-2 border-b">Tipo</th>
-              <th className="w-[5%] pb-2 border-b"></th>
+              <th className="w-[10%] pb-2 border-b hidden md:block">Pagamento</th>
+              <th className="w-[30%] pb-2 border-b text-xs md:text-base">Descrição</th>
+              <th className="w-[10%] pb-2 border-b text-xs md:text-base">Valor</th>
+              <th className="w-[10%] pb-2 border-b text-xs md:text-base">Parcelas</th>
+              <th className="w-[10%] pb-2 border-b hidden md:block">Pagas</th>
+              <th className="w-[10%] pb-2 border-b text-xs md:text-base">Data</th>
+              <th className="w-[10%] pb-2 border-b text-xs md:text-base">Tipo</th>
+              <th className="w-[5%] pb-2 border-b text-xs md:text-base"></th>
             </tr>
           </thead>
           <tbody>

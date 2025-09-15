@@ -9,30 +9,30 @@ export default function GridItem({ item, onDelete, onEdit }) {
   return (
     <tr className="border-b">
       {/* Pagamento */}
-      <td className="py-3 break-all">{item.payment}</td>
+      <td className="py-3 break-all hidden md:block">{item.payment}</td>
 
       {/* Descrição */}
-      <td className="py-3 break-all">{item.desc}</td>
+      <td className="py-3 break-all text-xs md:text-base">{item.desc}</td>
 
       {/* Valor */}
-      <td className="py-3 break-all">{item.amount}</td>
+      <td className="py-3 break-all text-xs md:text-base">{item.amount}</td>
 
       {/* Parcelas */}
-      <td className="py-3 text-start">{item.installments}</td>
+      <td className="py-3 text-start text-xs md:text-base">{item.installments}</td>
 
       {/* Parcelas Pagas */}
-      <td className="py-3 text-start">{item.paid}</td>
+      <td className="py-3 text-start hidden md:block">{item.paid}</td>
 
       {/* Data */}
-      <td className="py-3 text-start">
+      <td className="py-3 text-start text-xs md:text-base">
         {new Date(item.date).toLocaleDateString("pt-BR")}
       </td>
 
       <td>
         {item.type === "saida" ? (
-          <IoArrowDownCircleOutline className="text-red-500 w-5 h-5" />
+          <IoArrowDownCircleOutline className="text-red-500 w-4 h-4 md:w-5 md:h-5" />
         ) : (
-          <IoArrowUpCircleOutline className="text-green-500 w-5 h-5" />
+          <IoArrowUpCircleOutline className="text-green-500 w-4 h-4 md:w-5 md:h-5" />
         )}
       </td>
 
@@ -41,7 +41,7 @@ export default function GridItem({ item, onDelete, onEdit }) {
         <div className="flex justify-center gap-3">
           <IoTrashBinSharp
             onClick={() => onDelete(item.id)}
-            className="w-5 h-5 text-red-600 cursor-pointer hover:text-red-800 transition"
+            className="w-4 h-4 md:w-5 md:h-5 text-red-600 cursor-pointer hover:text-red-800 transition"
           />
           <FaEdit
             onClick={() =>
@@ -55,7 +55,7 @@ export default function GridItem({ item, onDelete, onEdit }) {
                 date: item.date,
               })
             }
-            className="w-5 h-5 text-blue-600 cursor-pointer hover:text-blue-800 transition"
+            className="w-4 h-4 md:w-5 md:h-5 text-blue-600 cursor-pointer hover:text-blue-800 transition"
           />
         </div>
       </td>

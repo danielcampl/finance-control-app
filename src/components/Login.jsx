@@ -11,7 +11,7 @@ export default function Login() {
     return (
         <section>
             <Button
-                className="w-44 h-10 font-sans font-semibold text-white bg-[#212529] hover:bg-[#343a40]"
+                className="w-20 h-10 md:w-44 md:h-full font-sans font-semibold text-white bg-[#212529] hover:bg-[#343a40]"
                 onClick={() => loginWithGoogle()}
             >
                 Entrar

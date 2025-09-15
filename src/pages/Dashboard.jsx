@@ -20,7 +20,7 @@ export default function Dashboard() {
   };
 
   return (
-    <section className="flex">
+    <section className="md:flex">
       <Sidebar>
         {routes.map((page) => (
           <SidebarItem

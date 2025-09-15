@@ -78,7 +78,16 @@ export default function Usuário() {
                                     <Typography className="!text-gray-500 text-[16px] font-normal md:max-w-sm">
                                         Último login
                                     </Typography>
-                                    <span className='font-sans text-[18px]'>{Date(getUserData.lastLogin).toLocaleLowerCase()}</span>
+                                    <span className="font-sans text-[18px]">
+                                        {new Date(getUserData.lastLogin.seconds * 1000).toLocaleString("pt-BR", {
+                                            day: "2-digit",
+                                            month: "2-digit",
+                                            year: "numeric",
+                                            hour: "2-digit",
+                                            minute: "2-digit",
+                                            second: "2-digit",
+                                        })}
+                                    </span>
                                 </div>
                             </pre>
                             : "Nenhum dado encontrado"}

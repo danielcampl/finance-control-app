@@ -24,11 +24,15 @@ export default function Gastos() {
   const currentBank = banks.find((b) => location.pathname.includes(b.id));
 
   return (
-    <Card className="p-10 bg-gradient-to-r from-slate-300 to-gray-50 w-full h-screen">
+    <Card className="min-h-screen w-full bg-gradient-to-r from-slate-300 to-gray-50 p-6 md:p-10 flex flex-col">
       <Header title={`Gastos${currentBank ? " " + currentBank.name : ""}`} />
-      <CardBody className="w-full h-full">
+
+      <CardBody
+        className="w-full flex-1 flex flex-col gap-4 overflow-y-auto"
+      >
         {!currentBank ? <GastosCards /> : <Outlet />}
       </CardBody>
+
       <Footer />
     </Card>
   );
