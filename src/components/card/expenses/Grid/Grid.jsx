@@ -11,6 +11,7 @@ import {
   deleteDoc,
   doc,
   updateDoc,
+  orderBy,
 } from "firebase/firestore";
 
 export default function Grid({ items, setItems, bankId }) {
@@ -27,7 +28,8 @@ export default function Grid({ items, setItems, bankId }) {
       try {
         const q = query(
           collection(db, "users", user.uid, "transactions"),
-          where("bankId", "==", bankId) // filtra pelo banco atual
+          where("bankId", "==", bankId),
+          orderBy("date", "asc") // 👈 ordena pela data crescente (antigo → recente)
         );
 
         const querySnapshot = await getDocs(q);

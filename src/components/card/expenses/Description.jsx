@@ -74,14 +74,19 @@ export default function Description({ transaction, bankId }) {
       return;
     }
 
+    const totalAmount = parseFloat(amount);
+    const installmentsCount = installments && installments.value !== "À Vista"
+      ? parseInt(installments.value.replace("x", ""), 10)
+      : 1;
+
     const newTransaction = {
       uid: user.uid,
-      bankId, // adiciona o banco recebido por prop
+      bankId,
       desc,
-      amount: parseFloat(amount),
+      amount: totalAmount / installmentsCount,
       expense: isExpense,
       payment: payment?.value || "",
-      installments: installments?.value || 'À Vista',
+      installments: installments?.value || "À Vista",
       paid: paid?.value || 1,
       type: type?.value || "",
       date: selectedDate ? selectedDate.toISOString() : new Date().toISOString(),
