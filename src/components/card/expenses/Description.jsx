@@ -81,8 +81,8 @@ export default function Description({ transaction, bankId }) {
       amount: parseFloat(amount),
       expense: isExpense,
       payment: payment?.value || "",
-      installments: installments?.value || 1,
-      paid: paid?.value || 'À vista',
+      installments: installments?.value || 'À Vista',
+      paid: paid?.value || 1,
       type: type?.value || "",
       date: selectedDate ? selectedDate.toISOString() : new Date().toISOString(),
     };
