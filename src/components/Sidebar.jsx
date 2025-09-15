@@ -28,11 +28,11 @@ export default function Sidebar({ children }) {
         <aside
             className="h-20 md:h-screen md:w-54"
         >
-            <nav className="justify-around md:h-full flex md:flex-col bg-white border-r shadow-sm">
+            <nav className="md:justify-around md:h-full flex md:flex-col bg-white border-r shadow-sm items-center justify-center">
                 <div className="p-4 pb-2 flex justify-between items-center">
                     <img
                         src="/images/logoBank.png"
-                        className='w-32 md:w-44'
+                        className='hidden md:block md:w-44'
                         alt=""
                     />
                 </div>
@@ -45,7 +45,7 @@ export default function Sidebar({ children }) {
               overflow-hidden transition-all
           `}
                 >
-                    <div className="leading-4 p-6 md:p-4">
+                    <div className="leading-4 p-4">
                         {user ? <Logout user={user} /> : <Login />}
                     </div>
                 </div>
