@@ -26,7 +26,7 @@ export default function GastosCards() {
   };
 
   return (
-    <div className="flex gap-4 flex-wrap">
+    <div className="flex gap-4 flex-wrap items-center justify-center md:justify-normal">
       {!selectedBank ? (
         banks.map((bank) => (
           <div
