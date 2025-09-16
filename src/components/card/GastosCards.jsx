@@ -8,11 +8,11 @@ export default function GastosCards() {
   const [selectedBank, setSelectedBank] = useState(null);
 
   const banks = [
-    { name: "Nubank", path: "/dashboard/gastos/nubank" },
-    { name: "Inter", path: "/dashboard/gastos/inter" },
-    { name: "Amazon Bradescard", path: "/dashboard/gastos/amazon" },
-    { name: "Itau", path: "/dashboard/gastos/itau" },
-    { name: "Xp Visa Infinite", path: "/dashboard/gastos/xpvisa" },
+    { name: "Nubank", path: "/dashboard/gastos/nubank", src: "/images/nubankcard.png" },
+    { name: "Inter", path: "/dashboard/gastos/inter", src: "/images/intercard.png" },
+    { name: "Amazon Bradescard", path: "/dashboard/gastos/amazon", src: "/images/amazoncard.png" },
+    { name: "Itau", path: "/dashboard/gastos/itau", src: "/images/itaucard.png" },
+    { name: "Xp Visa Infinite", path: "/dashboard/gastos/xpvisa", src: "/images/visainfinitecard.png" },
   ];
 
   const handleBankClick = (bank) => {
@@ -22,7 +22,7 @@ export default function GastosCards() {
 
   const handleBack = () => {
     setSelectedBank(null);
-    navigate("/dashboard/gastos"); // volta para a lista de bancos
+    navigate("/dashboard/gastos");
   };
 
   return (
@@ -31,10 +31,16 @@ export default function GastosCards() {
         banks.map((bank) => (
           <div
             key={bank.name}
-            className="border rounded cursor-pointer hover:bg-gray-100 w-[100%] p-6"
+            className="relative border rounded-sm cursor-pointer w-[220px] h-[140px] md:w-[340px] md:h-[200px] flex items-center justify-center text-white font-semibold shadow-lg hover:scale-105 transition"
+            style={{
+              backgroundImage: `url(${bank.src})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center"
+            }}
             onClick={() => handleBankClick(bank)}
           >
-            {bank.name}
+            <div className="absolute inset-0 bg-black/40 rounded" />
+            <span className="relative z-10">{bank.name}</span>
           </div>
         ))
       ) : (
