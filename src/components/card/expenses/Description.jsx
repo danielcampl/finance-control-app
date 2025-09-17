@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Select from "react-select";
 import { auth, db } from "../../../firebaseConfig";
-import { collection, addDoc, query, where, onSnapshot } from "firebase/firestore";
+import { collection, addDoc, query, where, onSnapshot, doc, deleteDoc, updateDoc } from "firebase/firestore";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -106,6 +106,41 @@ export default function Description({ transaction, bankId }) {
       setSelectedDate(null);
     } catch (err) {
       console.error("Erro ao salvar transação:", err);
+    }
+  };
+
+  const handlePayCard = async () => {
+    if (!window.confirm("Deseja mesmo pagar o cartão?")) return;
+
+    const user = auth.currentUser;
+    if (!user) return;
+
+    try {
+      for (const transaction of transactionsList) {
+        const docRef = doc(db, "users", user.uid, "transactions", transaction.id);
+
+        // Caso seja À Vista - deleta
+        if (transaction.installments === "À Vista") {
+          await deleteDoc(docRef);
+        }
+        // Caso seja parcelado (>1x) - soma 1 em paid
+        else {
+          const totalParcelas = parseInt(transaction.installments.replace("x", ""), 10);
+          const parcelasPagas = parseInt(transaction.paid || "1", 10);
+
+          // só atualiza se ainda tiver parcela pra pagar
+          if (parcelasPagas < totalParcelas) {
+            await updateDoc(docRef, {
+              paid: (parcelasPagas + 1).toString(),
+            });
+          } else {
+            // se já pagou todas, remove
+            await deleteDoc(docRef);
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Erro ao pagar cartão:", error);
     }
   };
 
@@ -225,7 +260,7 @@ export default function Description({ transaction, bankId }) {
               required
             />
           </div>
-          <div className="flex items-end gap-4">
+          <div className="flex flex-col md:flex-row items-end gap-4">
             <div className="flex flex-col">
               <span>Data</span>
               <DatePicker
@@ -235,13 +270,22 @@ export default function Description({ transaction, bankId }) {
                 className="w-full h-8 p-2"
               />
             </div>
-            <button
-              type="button"
-              onClick={handleSaveForm}
-              className="w-44 h-10 font-sans font-semibold text-white bg-[#212529] hover:bg-[#343a40]"
-            >
-              Adicionar
-            </button>
+            <div className="flex flex-col md:flex-row w-full gap-4">
+              <button
+                type="button"
+                onClick={handleSaveForm}
+                className="w-44 h-10 font-sans font-semibold text-white bg-[#212529] hover:bg-[#343a40]"
+              >
+                Adicionar
+              </button>
+              <button
+                type="button"
+                onClick={handlePayCard}
+                className="w-44 h-10 font-sans font-semibold bg-red-100 text-red-700 hover:bg-red-700 hover:text-white"
+              >
+                Pagar Cartão
+              </button>
+            </div>
           </div>
         </div>
       </div>
