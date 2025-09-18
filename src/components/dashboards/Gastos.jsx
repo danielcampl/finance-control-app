@@ -18,6 +18,12 @@ export default function Gastos() {
     { name: "Amazon Bradescard", path: "/dashboard/gastos/amazon", id: "amazon" },
     { name: "Itau", path: "/dashboard/gastos/itau", id: "itau" },
     { name: "Xp Visa Infinite", path: "/dashboard/gastos/xpvisa", id: "xpvisa" },
+    { name: "Bradesco", path: "/dashboard/gastos/bradesco", id: "bradesco" },
+    { name: "BSB", path: "/dashboard/gastos/bsb", id: "bsb" },
+    { name: "BTG", path: "/dashboard/gastos/btg", id: "btg" },
+    { name: "C6", path: "/dashboard/gastos/c6", id: "c6" },
+    { name: "Caixa", path: "/dashboard/gastos/caixa", id: "caixa" },
+    { name: "Santander", path: "/dashboard/gastos/santander", id: "santander" },
     { name: "Pix", path: "/dashboard/gastos/pix", id: "pix" },
   ];
 
