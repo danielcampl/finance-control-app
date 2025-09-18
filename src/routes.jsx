@@ -1,4 +1,4 @@
-import { Inter, Nubank, Amazon, Itau, XPVisa, Received, Total } from "components/card/expenses/banks";
+import { Inter, Nubank, Amazon, Itau, XPVisa, Pix } from "components/card/expenses/banks";
 import { Ajuda, Gastos, Investimentos, Painel, Usuario } from "components/dashboards";
 
 const routes = [
@@ -37,16 +37,11 @@ const routes = [
         path: "xpvisa",
         element: <XPVisa />,
       },
-      // {
-      //   name: "Received",
-      //   path: "received",
-      //   element: <Received />,
-      // },
-      // {
-      //   name: "Total",
-      //   path: "total",
-      //   element: <Total />,
-      // },
+            {
+        name: "Pix",
+        path: "pix",
+        element: <Pix />,
+      },
     ],
   },
   {

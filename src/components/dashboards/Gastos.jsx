@@ -11,13 +11,14 @@ import GastosCards from "components/card/GastosCards";
 export default function Gastos() {
   const location = useLocation();
 
-  // lista dos bancos dnv
+  // lista dos bancos
   const banks = [
     { name: "Nubank", path: "/dashboard/gastos/nubank", id: "nubank" },
     { name: "Inter", path: "/dashboard/gastos/inter", id: "inter" },
     { name: "Amazon Bradescard", path: "/dashboard/gastos/amazon", id: "amazon" },
     { name: "Itau", path: "/dashboard/gastos/itau", id: "itau" },
     { name: "Xp Visa Infinite", path: "/dashboard/gastos/xpvisa", id: "xpvisa" },
+    { name: "Pix", path: "/dashboard/gastos/pix", id: "pix" },
   ];
 
   // encontra o banco atual pelo path
