@@ -36,6 +36,12 @@ export default function BankCreator({ banks }) {
         { name: "Itau", label: "Itau" },
         { name: "Amazon", label: "Amazon" },
         { name: "XP Visa", label: "XP Visa" },
+        { name: "Bradesco", label: "Bradesco" },
+        { name: "BSB", label: "BSB" },
+        { name: "BTG", label: "BTG" },
+        { name: "C6", label: "C6" },
+        { name: "Caixa", label: "Caixa" },
+        { name: "Santander", label: "Santander" },
     ];
 
     const handleDeleteBank = async (id) => {

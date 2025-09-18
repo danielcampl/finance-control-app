@@ -1,4 +1,17 @@
-import { Inter, Nubank, Amazon, Itau, XPVisa, Pix } from "components/card/expenses/banks";
+import {
+  Inter,
+  Nubank,
+  Amazon,
+  Itau,
+  XPVisa,
+  Pix,
+  Bradesco,
+  BSB,
+  BTG,
+  C6,
+  Caixa,
+  Santander,
+} from "components/card/expenses/banks";
 import { Ajuda, Gastos, Investimentos, Painel, Usuario } from "components/dashboards";
 
 const routes = [
@@ -36,6 +49,36 @@ const routes = [
         name: "Xp Visa Infinite",
         path: "xpvisa",
         element: <XPVisa />,
+      },
+      {
+        name: "Bradesco",
+        path: "bradesco",
+        element: <Bradesco />,
+      },
+      {
+        name: "BSB",
+        path: "bsb",
+        element: <BSB />,
+      },
+      {
+        name: "BTG",
+        path: "btg",
+        element: <BTG />,
+      },
+      {
+        name: "C6",
+        path: "c6",
+        element: <C6 />,
+      },
+      {
+        name: "Caixa",
+        path: "caixa",
+        element: <Caixa />,
+      },
+      {
+        name: "Santander",
+        path: "santander",
+        element: <Santander />,
       },
       {
         name: "Pix",
