@@ -8,11 +8,12 @@ export default function GastosCards() {
   const [selectedBank, setSelectedBank] = useState(null);
 
   const banks = [
-    { name: "Nubank", path: "/dashboard/gastos/nubank", src: "/images/nubankcard.png" },
-    { name: "Inter", path: "/dashboard/gastos/inter", src: "/images/intercard.png" },
-    { name: "Amazon Bradescard", path: "/dashboard/gastos/amazon", src: "/images/amazoncard.png" },
-    { name: "Itau", path: "/dashboard/gastos/itau", src: "/images/itaucard.png" },
-    { name: "Xp Visa Infinite", path: "/dashboard/gastos/xpvisa", src: "/images/visainfinitecard.png" },
+    { name: "Nubank", path: "/dashboard/gastos/nubank", src: "/images/cards/nubankcard.png" },
+    { name: "Inter", path: "/dashboard/gastos/inter", src: "/images/cards/intercard.png" },
+    { name: "Amazon Bradescard", path: "/dashboard/gastos/amazon", src: "/images/cards/amazoncard.png" },
+    { name: "Itau", path: "/dashboard/gastos/itau", src: "/images/cards/itaucard.png" },
+    { name: "Xp Visa Infinite", path: "/dashboard/gastos/xpvisa", src: "/images/cards/visainfinitecard.png" },
+    { name: "Pix", path: "/dashboard/gastos/pix", src: "/images/cards/pix.jpg" },
   ];
 
   const handleBankClick = (bank) => {

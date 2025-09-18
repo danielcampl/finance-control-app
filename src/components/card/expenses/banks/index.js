@@ -3,5 +3,4 @@ export { default as Inter } from "./Inter";
 export { default as Amazon } from "./Amazon";
 export { default as Itau } from "./Itau";
 export { default as XPVisa } from "./XPVisa";
-export { default as Received } from "./Received";
-export { default as Total } from "./Total";
+export { default as Pix } from "./Pix";
