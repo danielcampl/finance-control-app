@@ -37,7 +37,7 @@ const routes = [
         path: "xpvisa",
         element: <XPVisa />,
       },
-            {
+      {
         name: "Pix",
         path: "pix",
         element: <Pix />,
