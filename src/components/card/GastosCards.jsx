@@ -54,22 +54,24 @@ export default function GastosCards() {
       <BankCreator banks={banks} />
 
       {/* Cards */}
-      <div className="flex gap-4 flex-wrap items-center justify-center md:justify-normal">
+      <div className="flex gap-4 flex-wrap items-center justify-center">
         {!selectedBank ? (
           banks.map((bank) => (
-            <div
-              key={bank.id}
-              className="relative border rounded-sm cursor-pointer w-[220px] h-[140px] md:w-[340px] md:h-[200px] flex items-center justify-center text-white font-semibold shadow-lg hover:scale-105 transition"
-              style={{
-                backgroundImage: `url(${bank.src})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-              onClick={() => handleBankClick(bank)}
-            >
-              <div className="absolute inset-0 bg-black/40 rounded" />
-              <span className="relative z-10">{bank.name}</span>
-            </div>
+            <>
+              <div
+                key={bank.id}
+                className="relative border rounded-sm cursor-pointer w-[220px] h-[140px] md:w-[340px] md:h-[200px] flex items-center justify-center text-white font-semibold shadow-lg hover:scale-105 transition"
+                style={{
+                  backgroundImage: `url(${bank.src})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+                onClick={() => handleBankClick(bank)}
+              >
+                <div className="absolute inset-0 bg-black/40 rounded" />
+                <span className="relative z-10">{bank.name}</span>
+              </div>
+            </>
           ))
         ) : (
           <button

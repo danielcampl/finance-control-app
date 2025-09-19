@@ -9,8 +9,8 @@ import {
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
 
-import { Footer } from "components/card/Footer";
-import Header from "components/card/Header";
+import { Footer } from "components/Footer";
+import Header from "components/Header";
 
 const Result = () => {
     return (

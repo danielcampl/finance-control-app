@@ -9,8 +9,8 @@ import {
     Typography,
 } from "@material-tailwind/react";
 
-import { Footer } from "components/card/Footer";
-import Header from "components/card/Header";
+import { Footer } from "components/Footer";
+import Header from "components/Header";
 
 export default function Usuário() {
     const [getUserData, setGetUserData] = useState(null);
