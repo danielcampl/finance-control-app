@@ -4,8 +4,8 @@ import {
   CardBody,
 } from "@material-tailwind/react";
 
-import { Footer } from "components/card/Footer";
-import Header from "components/card/Header";
+import { Footer } from "components/Footer";
+import Header from "components/Header";
 import GastosCards from "components/card/GastosCards";
 
 export default function Gastos() {
