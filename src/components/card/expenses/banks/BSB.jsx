@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 import Description from "../Description";
 
-export default function MercadoPago() {
+export default function BSB() {
   const [transactions, setTransactions] = useState([]);
   const navigate = useNavigate();
 
@@ -21,9 +21,9 @@ export default function MercadoPago() {
     const user = auth.currentUser;
     if (!user) return;
 
-    // busca apenas transações do usuário logado e com bankId = mercadopago
+    // busca apenas transações do usuário logado e com bankId = bsb
     const col = collection(db, "users", user.uid, "transactions");
-    const q = query(col, where("bankId", "==", "mercadopago"));
+    const q = query(col, where("bankId", "==", "bsb"));
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const data = snapshot.docs.map((doc) => ({
@@ -44,7 +44,7 @@ export default function MercadoPago() {
     const col = collection(db, "users", user.uid, "transactions");
     await addDoc(col, {
       ...transaction,
-      bankId: "mercadopago", // já definido pelo componente
+      bankId: "bsb", // já definido pelo componente
       userId: user.uid,
     });
   };
@@ -63,7 +63,7 @@ export default function MercadoPago() {
         Voltar
       </button>
       <CardBody>
-        <Description onAdd={handleAddTransaction} bankId='mercadopago' />
+        <Description onAdd={handleAddTransaction} bankId='bsb' />
       </CardBody>
     </>
   );

@@ -5,7 +5,11 @@ import {
   Itau,
   XPVisa,
   Pix,
-  MercadoPago,
+  Bradesco,
+  BSB,
+  BTG,
+  C6,
+  Caixa,
   Santander,
 } from "components/card/expenses/banks";
 import { Ajuda, Gastos, Investimentos, Painel, Usuario } from "components/dashboards";
@@ -47,9 +51,29 @@ const routes = [
         element: <XPVisa />,
       },
       {
-        name: "Mercado Pago",
-        path: "mercadopago",
-        element: <MercadoPago />,
+        name: "Bradesco",
+        path: "bradesco",
+        element: <Bradesco />,
+      },
+      {
+        name: "BSB",
+        path: "bsb",
+        element: <BSB />,
+      },
+      {
+        name: "BTG",
+        path: "btg",
+        element: <BTG />,
+      },
+      {
+        name: "C6",
+        path: "c6",
+        element: <C6 />,
+      },
+      {
+        name: "Caixa",
+        path: "caixa",
+        element: <Caixa />,
       },
       {
         name: "Santander",
