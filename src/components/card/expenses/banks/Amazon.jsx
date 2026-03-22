@@ -50,7 +50,7 @@ export default function Amazon() {
   };
 
   const handleBack = () => {
-    navigate("/dashboard/gastos"); // volta para a lista de bancos
+    navigate("/dashboard/gastos"); // volta para a lista de bancos //
   };
 
   return (
