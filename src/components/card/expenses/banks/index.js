@@ -1,8 +1,10 @@
+// export { default as XPVisa } from "./XPVisa";
 export { default as Nubank } from "./Nubank";
 export { default as Inter } from "./Inter";
 export { default as Amazon } from "./Amazon";
 export { default as Itau } from "./Itau";
-export { default as XPVisa } from "./XPVisa";
 export { default as Santander } from "./Santander";
 export { default as MercadoPago } from "./MercadoPago";
+export { default as Picpay } from "./Picpay";
+export { default as C6 } from "./C6";
 export { default as Pix } from "./Pix";

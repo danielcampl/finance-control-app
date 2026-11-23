@@ -40,7 +40,7 @@ export function Footer({ brandName, brandLink, routes }) {
 }
 
 Footer.defaultProps = {
-  brandName: "Daniel Campelo",
+  brandName: "Daniel Oliveira",
   brandLink: "https://www.instagram.com/danielveirac",
   routes: [
     { name: "Instagram", path: "https://www.instagram.com/danielveirac" },

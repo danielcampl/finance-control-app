@@ -13,13 +13,15 @@ export default function Gastos() {
 
   // lista dos bancos
   const banks = [
+    // { name: "Xp Visa Infinite", path: "/dashboard/gastos/xpvisa", id: "xpvisa" },
     { name: "Nubank", path: "/dashboard/gastos/nubank", id: "nubank" },
     { name: "Inter", path: "/dashboard/gastos/inter", id: "inter" },
     { name: "Amazon Bradescard", path: "/dashboard/gastos/amazon", id: "amazon" },
     { name: "Itau", path: "/dashboard/gastos/itau", id: "itau" },
-    { name: "Xp Visa Infinite", path: "/dashboard/gastos/xpvisa", id: "xpvisa" },
     { name: "Mercado Pago", path: "/dashboard/gastos/mercadopago", id: "mercadopago" },
     { name: "Santander", path: "/dashboard/gastos/santander", id: "santander" },
+    { name: "Picpay", path: "/dashboard/gastos/picpay", id: "picpay" },
+    { name: "C6", path: "/dashboard/gastos/c6", id: "c6" },
     { name: "Pix", path: "/dashboard/gastos/pix", id: "pix" },
   ];
 

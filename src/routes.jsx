@@ -1,12 +1,14 @@
 import {
+  // XPVisa,
   Inter,
   Nubank,
   Amazon,
   Itau,
-  XPVisa,
-  Pix,
   MercadoPago,
   Santander,
+  Picpay,
+  C6,
+  Pix,
 } from "components/card/expenses/banks";
 import { Ajuda, Gastos, Investimentos, Painel, Usuario } from "components/dashboards";
 
@@ -21,6 +23,11 @@ const routes = [
     path: "gastos/*", // Gastos tem subrotas
     element: <Gastos />,
     children: [
+      // {
+      //   name: "Xp Visa Infinite",
+      //   path: "xpvisa",
+      //   element: <XPVisa />,
+      // },
       {
         name: "Nubank",
         path: "nubank",
@@ -42,11 +49,6 @@ const routes = [
         element: <Itau />,
       },
       {
-        name: "Xp Visa Infinite",
-        path: "xpvisa",
-        element: <XPVisa />,
-      },
-      {
         name: "Mercado Pago",
         path: "mercadopago",
         element: <MercadoPago />,
@@ -60,6 +62,16 @@ const routes = [
         name: "Pix",
         path: "pix",
         element: <Pix />,
+      },
+      {
+        name: "Picpay",
+        path: "picpay",
+        element: <Picpay />,
+      },
+      {
+        name: "C6",
+        path: "c6",
+        element: <C6 />,
       },
     ],
   },
