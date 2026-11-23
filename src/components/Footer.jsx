@@ -1,3 +1,4 @@
+
 import PropTypes from "prop-types";
 import { Typography } from "@material-tailwind/react";
 import { HeartIcon } from "@heroicons/react/24/solid";
@@ -14,11 +15,13 @@ export function Footer({ brandName, brandLink, routes }) {
           <a
             href={brandLink}
             target="_blank"
+            rel="noopener noreferrer"
             className="transition-colors hover:text-blue-500 font-bold"
           >
             {brandName}
           </a>
         </Typography>
+
         <ul className="hidden md:flex items-center gap-4">
           {routes.map(({ name, path }) => (
             <li key={name}>
@@ -26,6 +29,7 @@ export function Footer({ brandName, brandLink, routes }) {
                 as="a"
                 href={path}
                 target="_blank"
+                rel="noopener noreferrer"
                 variant="small"
                 className="py-0.5 px-1 font-normal text-inherit transition-colors hover:text-blue-500"
               >

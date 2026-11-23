@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Card, CardBody, Typography } from "@material-tailwind/react";
 import { auth, db } from "../../firebaseConfig";
 import { collection, onSnapshot } from "firebase/firestore";
-import { Pie, Bar } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import {
     Chart as ChartJS,
     ArcElement,
@@ -76,23 +76,6 @@ export default function Painel() {
         ],
     };
 
-    // const pieData = {
-    //     labels: Object.keys(summaryByBank),
-    //     datasets: [
-    //         {
-    //             data: Object.values(summaryByBank).map((s) => s.total),
-    //             backgroundColor: [
-    //                 "#3b82f6",
-    //                 "#f97316",
-    //                 "#10b981",
-    //                 "#ef4444",
-    //                 "#8b5cf6",
-    //                 "#facc15",
-    //             ],
-    //         },
-    //     ],
-    // };
-
     const totalCredito = transactions
         .filter((t) => t.payment === "Crédito")
         .reduce((acc, cur) => acc + Number(cur.amount), 0);
@@ -109,11 +92,6 @@ export default function Painel() {
                 <div className="w-full max-w-4xl mx-auto">
                     <Bar data={barData} />
                 </div>
-
-                {/* Gráfico de pizza */}
-                {/* <div className="w-full max-w-md mx-auto">
-                    <Pie data={pieData} />
-                </div> */}
 
                 {/* Cards individuais */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">

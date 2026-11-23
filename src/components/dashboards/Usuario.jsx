@@ -60,7 +60,11 @@ export default function Usuário() {
                                     <Typography className="!text-gray-500 text-[16px] font-normal md:max-w-sm">
                                         Sua foto
                                     </Typography>
-                                    <img src={getUserData.photo} alt="photo" className='w-20 h-20' />
+                                    <img
+                                        src={getUserData.photo}
+                                        alt="Foto do perfil do usuário"
+                                        className='w-20 h-20'
+                                    />
                                 </div>
                                 <div>
                                     <Typography className="!text-gray-500 text-[16px] font-normal md:max-w-sm">

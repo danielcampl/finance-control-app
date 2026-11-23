@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Select from "react-select";
 import { auth, db } from "../../../../firebaseConfig";
-import { collection, doc, setDoc, deleteDoc } from "firebase/firestore";
+import { doc, setDoc, deleteDoc } from "firebase/firestore";
 
 export default function BankCreator({ banks }) {
     const [name, setName] = useState(null);
