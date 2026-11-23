@@ -45,7 +45,7 @@ export default function Usuário() {
     }, []);
 
     return (
-        <Card className="p-10 bg-gradient-to-r from-slate-300 to-gray-50 w-full h-screen">
+        <Card className="p-10 bg-gradient-to-r from-slate-600 to-gray-300 w-full h-screen">
             <Header title={'Usuário'} />
             <CardBody className="w-full h-full">
                 <Typography className="!text-gray-600 text-[18px] font-normal md:max-w-sm">
@@ -60,7 +60,11 @@ export default function Usuário() {
                                     <Typography className="!text-gray-500 text-[16px] font-normal md:max-w-sm">
                                         Sua foto
                                     </Typography>
-                                    <img src={getUserData.photo} alt="photo" className='w-20 h-20' />
+                                    <img
+                                        src={getUserData.photo}
+                                        alt="Foto do perfil do usuário"
+                                        className='w-20 h-20'
+                                    />
                                 </div>
                                 <div>
                                     <Typography className="!text-gray-500 text-[16px] font-normal md:max-w-sm">

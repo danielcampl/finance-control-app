@@ -13,13 +13,15 @@ export default function Gastos() {
 
   // lista dos bancos
   const banks = [
+    // { name: "Xp Visa Infinite", path: "/dashboard/gastos/xpvisa", id: "xpvisa" },
     { name: "Nubank", path: "/dashboard/gastos/nubank", id: "nubank" },
     { name: "Inter", path: "/dashboard/gastos/inter", id: "inter" },
     { name: "Amazon Bradescard", path: "/dashboard/gastos/amazon", id: "amazon" },
     { name: "Itau", path: "/dashboard/gastos/itau", id: "itau" },
-    { name: "Xp Visa Infinite", path: "/dashboard/gastos/xpvisa", id: "xpvisa" },
     { name: "Mercado Pago", path: "/dashboard/gastos/mercadopago", id: "mercadopago" },
     { name: "Santander", path: "/dashboard/gastos/santander", id: "santander" },
+    { name: "Picpay", path: "/dashboard/gastos/picpay", id: "picpay" },
+    { name: "C6", path: "/dashboard/gastos/c6", id: "c6" },
     { name: "Pix", path: "/dashboard/gastos/pix", id: "pix" },
   ];
 
@@ -27,7 +29,7 @@ export default function Gastos() {
   const currentBank = banks.find((b) => location.pathname.includes(b.id));
 
   return (
-    <Card className="min-h-screen w-full bg-gradient-to-r from-slate-300 to-gray-50 p-6 md:p-10 flex flex-col">
+    <Card className="min-h-screen w-full bg-gradient-to-r from-slate-600 to-gray-300 p-6 md:p-10 flex flex-col">
       <Header title={`Gastos${currentBank ? " " + currentBank.name : ""}`} />
 
       <CardBody

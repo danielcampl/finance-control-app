@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Select from "react-select";
 import { auth, db } from "../../../../firebaseConfig";
-import { collection, doc, setDoc, deleteDoc } from "firebase/firestore";
+import { doc, setDoc, deleteDoc } from "firebase/firestore";
 
 export default function BankCreator({ banks }) {
     const [name, setName] = useState(null);
@@ -31,13 +31,15 @@ export default function BankCreator({ banks }) {
     };
 
     const options = [
+        // { name: "XP Visa", label: "XP Visa" },
         { name: "Nubank", label: "Nubank" },
         { name: "Inter", label: "Inter" },
         { name: "Itau", label: "Itau" },
         { name: "Amazon", label: "Amazon" },
-        { name: "XP Visa", label: "XP Visa" },
         { name: "MercadoPago", label: "Mercado Pago" },
         { name: "Santander", label: "Santander" },
+        { name: "Picpay", label: "Picpay" },
+        { name: "C6", label: "C6" },
     ];
 
     const handleDeleteBank = async (id) => {
