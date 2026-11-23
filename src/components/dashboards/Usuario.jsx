@@ -45,7 +45,7 @@ export default function Usuário() {
     }, []);
 
     return (
-        <Card className="p-10 bg-gradient-to-r from-slate-300 to-gray-50 w-full h-screen">
+        <Card className="p-10 bg-gradient-to-r from-slate-600 to-gray-300 w-full h-screen">
             <Header title={'Usuário'} />
             <CardBody className="w-full h-full">
                 <Typography className="!text-gray-600 text-[18px] font-normal md:max-w-sm">

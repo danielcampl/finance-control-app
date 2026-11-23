@@ -98,10 +98,10 @@ export default function Painel() {
         .reduce((acc, cur) => acc + Number(cur.amount), 0);
 
     return (
-        <Card className="p-10 bg-gradient-to-r from-slate-300 to-gray-50 w-full h-screen">
+        <Card className="p-10 bg-gradient-to-r from-slate-600 to-gray-300 w-full h-screen">
             <Header title={"Painel"} />
             <CardBody className="w-full h-full overflow-y-auto flex flex-col gap-10">
-                <Typography className="!text-gray-600 text-[18px] font-normal">
+                <Typography className="!text-gray-100 text-[18px] font-normal">
                     Resumo de gastos por banco:
                 </Typography>
 
